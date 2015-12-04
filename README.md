@@ -18,6 +18,31 @@ Create `gulpfile.js`
 	
 	var config; // = {...see Conguration};
     var gulp = require('gulpzilla')(config);
+    
+Add `npm run jest` script in `package.json`
+
+```
+ "scripts": {
+    "test": "eslint src/js/ && npm run jest",
+    "jest": "NODE_PATH=src/js:node_modules jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testPathDirs": [
+      "<rootDir>/__tests__"
+    ],
+    "testPathIgnorePatterns": [
+      "pending"
+    ],
+    "unmockedModulePathPatterns": [
+      "node_modules",
+      "utils",
+      "constants",
+      "__mocks__"
+    ],
+    "modulePathIgnorePatterns": []
+  },
+```
 
 Run in Terminal
 
