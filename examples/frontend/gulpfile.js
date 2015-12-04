@@ -1,7 +1,6 @@
 const config = {
     debug: true,
 
-    rootDir: __dirname,
     publicDir: __dirname+'/public',
 
     jest: {

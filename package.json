@@ -1,7 +1,7 @@
 {
     "name": "gulpzilla",
     "version": "0.0.1",
-    "description": "gulp files to shaaaare across",
+    "description": "gulp files to shaaaare across your code base",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

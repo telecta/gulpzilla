@@ -4,7 +4,6 @@ var fs = require('fs');
 
 module.exports = function(gulp, opts, $){
     var config = opts.config;
-    var rootDir = config.rootDir;
     var prev = "";
 
     gulp.task('watch-jest', function() {
