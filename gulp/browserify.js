@@ -20,7 +20,8 @@ module.exports = function(gulp, opts, $){
             extensions: ['js', '.react.js', 'jsx']
         });
         b.transform("babelify", {
-            retainLines: true
+            retainLines: true,
+            presets: ["es2015", "react"]
         });
         b = watch ? watchify(b) : b;
         b.add(config.js.target);
