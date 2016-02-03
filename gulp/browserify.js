@@ -21,7 +21,8 @@ module.exports = function(gulp, opts, $){
         });
         b.transform("babelify", {
             retainLines: true,
-            presets: ["es2015", "react", "syntax-object-rest-spread"]
+            presets: ["es2015", "react"],
+            plugins: ["syntax-object-rest-spread"]
         });
         b = watch ? watchify(b) : b;
         b.add(config.js.target);
