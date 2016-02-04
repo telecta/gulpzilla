@@ -1,5 +1,5 @@
 # gulpzilla
-The gulp files to shaaaare across your code base
+Some common gulp files to shaaaare 
 
 It consists of gulpies:  
 - `gulp/browserify.js`    
@@ -8,6 +8,8 @@ It consists of gulpies:
 - `gulp/jest.js`
 
 `babel` is used in both `gulp/browserify` and `gulp/jest`
+
+Note: create`.babelrc` to add your app specific presets/plugins.
 
 ## Usage
 Install 
