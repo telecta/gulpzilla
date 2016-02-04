@@ -5,7 +5,11 @@ module.exports = function(gulp, opts, $){
     var config = opts.config;
 
     gulp.task('sass', function(cb){
-        sequence('bower-copy', 'ruby-sass', cb);
+        if(config.sass.bowerCopy){
+            sequence('bower-copy', 'ruby-sass', cb);
+        }else{
+            sequence('ruby-sass', cb);
+        }
     });
 
     gulp.task('watch-sass', ['css-rebundle'], function() {
