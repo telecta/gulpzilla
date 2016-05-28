@@ -10,22 +10,19 @@ module.exports = function(config){
         config && typeof config === 'object',
         'gulpzilla: function argument `config` is required.');
 
+    opts.config = config;
+
+    require('./gulp/browserify')(gulp, opts, $);
     invariant(
         config.js && typeof config.js === 'object'
             && config.js.srcDir && config.js.target
             && config.js.distDir && config.js.distFilename,
         '{srcDir, target, distDir, distFilename} in config[\'js\'] is required.');
 
-    invariant(
-        config.jest && typeof config.jest === 'object'
-            && config.jest.srcDir,
-        '{srcDir} in config[\'jest\'] is required.');
+    gulp.task('default',['browserify']);
+    gulp.task('watch', ['watch-browserify']);
 
-    opts.config = config;
-
-    require('./gulp/browserify')(gulp, opts, $);
-
-    if(config.sass){
+    if(config.sass) {
         invariant(
             config.sass && typeof config.sass === 'object'
                 && config.sass.srcDir && config.sass.target
@@ -37,17 +34,22 @@ module.exports = function(config){
 
         gulp.task('default',['sass', 'browserify']);
         gulp.task('watch', ['watch-browserify', 'watch-sass']);
-    }else{
-        gulp.task('default',['browserify']);
-        gulp.task('watch', ['watch-browserify']);
     }
 
+    if(config.jest) {
+        require('./gulp/jest')(gulp, opts, $);
+        invariant(
+            config.jest && typeof config.jest === 'object'
+                && config.jest.srcDir,
+            '{srcDir} in config[\'jest\'] is required.');
 
-    require('./gulp/jest')(gulp, opts, $);
-    require('./gulp/disc')(gulp, opts, $);
+        gulp.task('test', ['jest']);
+        gulp.task('test-one', ['watch-jest']);
+    }
 
-    gulp.task('test', ['jest']);
-    gulp.task('test-one', ['watch-jest']);
+    if(config.disc) {
+        require('./gulp/disc')(gulp, opts, $);
+    }
 
     return gulp;
 }
