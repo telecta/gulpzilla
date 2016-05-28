@@ -15,7 +15,6 @@ module.exports = function(gulp, opts, $){
             debug: config.debug || false,
             cache: {},
             packageCache: {},
-            fullPaths: true,
             paths: [config.js.srcDir],
             extensions: ['js', '.react.js', 'jsx']
         });
