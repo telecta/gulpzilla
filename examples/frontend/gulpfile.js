@@ -1,11 +1,8 @@
 const config = {
-    debug: true,
-
-    publicDir: __dirname+'/public',
+    debug: process.env.NODE_ENV !== 'production',
 
     jest: {
-        srcDir: __dirname+'/__tests__',
-        noStackTrace: false
+        srcDir: __dirname+'/__tests__'
     },
 
     js: {
@@ -16,6 +13,10 @@ const config = {
         distFilename: 'bundle.js',
     },
 
+    disc: {
+        outputPath: __dirname + '/disc.html'
+    },
+
     sass: {
         srcDir: __dirname+'/src/sass',
         target: __dirname+'/src/sass/style.scss',
@@ -23,30 +24,26 @@ const config = {
         distDir: __dirname+'/public/css',
         distFilename: 'bundle.css',
 
-        loadPaths: [ './vendor/bower_components/bootstrap-sass-official/assets/stylesheets',
-        './vendor/bower_components/fontawesome/scss'],
+        loadPaths: [ './vendor/bower_components/bootstrap-sass-official/assets/stylesheets'],
 
-        bowerDir: __dirname+'/vendor/',
-        bowerCopy: ['bootstrap-js', 'bootstrap-icons', 'fontawesome']
+        bowerDir: __dirname+'/vendor/'
     }
 };
 
 var gulp = require('gulpzilla')(config);
 
-gulp.task('fontawesome', function() {
-    return gulp
-    .src(config.sass.bowerDir + '/fontawesome/fonts/**.*')
-    .pipe(gulp.dest(config.publicDir+'/fonts'));
-});
+gulp.task('default', ['sass', 'browserify']);
+gulp.task('watch', ['watch-sass', 'watch-browserify']);
+gulp.task('test', ['jest']);
 
-gulp.task('bootstrap-icons', function() {
-    return gulp
-    .src(config.sass.bowerDir + '/bootstrap-sass-official/assets/fonts/bootstrap/**.*')
-    .pipe(gulp.dest(config.publicDir+'/fonts'));
-});
-
-gulp.task('bootstrap-js', function() {
-    return gulp
-    .src(config.sass.bowerDir + '/bootstrap-sass-official/assets/javascripts/bootstrap.js')
-    .pipe(gulp.dest(config.js.distDir));
-});
+// gulp.task('bootstrap-icons', function() {
+//     return gulp
+//     .src(config.sass.bowerDir + '/bootstrap-sass-official/assets/fonts/bootstrap/**.*')
+//     .pipe(gulp.dest(config.publicDir+'/fonts'));
+// });
+//
+// gulp.task('bootstrap-js', function() {
+//     return gulp
+//     .src(config.sass.bowerDir + '/bootstrap-sass-official/assets/javascripts/bootstrap.js')
+//     .pipe(gulp.dest(config.js.distDir));
+// });
