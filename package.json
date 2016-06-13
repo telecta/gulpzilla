@@ -31,8 +31,8 @@
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.7.0",
     "yargs": "^4.7.1",
-    "invariant": "^2.1.1",
-    "object-assign": "^4.0.1"
+    "invariant": "^2.2.1",
+    "object-assign": "^4.1.0"
   },
   "engines": {
     "node": "6.x.x",
