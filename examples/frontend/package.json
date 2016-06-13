@@ -1,0 +1,39 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/js/index.js",
+  "scripts": {
+    "jest": "jest"
+  },
+  "jest": {
+    "bail": true,
+    "verbose": true,
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testPathDirs": [
+      "<rootDir>/__tests__"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacktangent/gulpzilla.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blacktangent/gulpzilla/issues"
+  },
+  "homepage": "https://github.com/blacktangent/gulpzilla#readme",
+  "devDependencies": {
+    "babel-jest": "^12.1.0",
+    "gulpzilla": "file:../../../gulpzilla",
+    "gulpzilla-disc": "file:../../../gulpzilla-disc",
+    "gulpzilla-jest": "file:../../../gulpzilla-jest",
+    "gulpzilla-sass": "file:../../../gulpzilla-sass",
+    "invariant": "^2.2.1",
+    "jest-cli": "^12.1.1"
+  },
+  "dependencies": {
+    "invariant": "^2.2.1"
+  }
+}

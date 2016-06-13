@@ -1,86 +1,48 @@
 # gulpzilla
-Some common gulp files to shaaaare 
+Gulpzilla adds `gulp [commands]` to your [gulp](http://gulpjs.com/) setup.
 
-It consists of gulpies:  
-- `gulp/browserify.js`    
-- `gulp/sass.js`  
-- `gulp/bower.js`   
-- `gulp/jest.js`
+In `gulpzilla v2.x.x`, `gulp jest` and ` gulp sass` are removed from default.   
+You can enable them by installing additional setup below:  
 
-`babel` is used in both `gulp/browserify` and `gulp/jest`
+- [gulpzilla-sass](https://github.com/blacktangent/gulpzilla-sass)  
+- [gulpzilla-jest](https://github.com/blacktangent/gulpzilla-jest)  
+- [gulpzilla-disc](https://github.com/blacktangent/gulpzilla-disc)  
+- or your own gulpzilla-[setup]
 
-Note: create`.babelrc` to add your app specific presets/plugins.
+By default, `gulpzilla` has 2 gulp commands ready  
+1. `gulp browserify`  
+2. `gulp watch-browserify`  
 
-## Usage
-Install 
+## Install
 
-    $ npm install gulpzilla --save-dev                 
+    $ npm install gulpzilla --save-dev   
     
-Create `gulpfile.js`
-	
-	var config; // = {...see Conguration};
-    var gulp = require('gulpzilla')(config);
-    
-Add `npm run jest` script in `package.json`
+## Usage          
+
+Add this in your `gulpfile.js`:
 
 ```
- "scripts": {
-    "test": "eslint src/js/ && npm run jest",
-    "jest": "NODE_PATH=src/js:node_modules jest"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testPathDirs": [
-      "<rootDir>/__tests__"
-    ],
-    "testPathIgnorePatterns": [
-      "pending"
-    ],
-    "unmockedModulePathPatterns": [
-      "node_modules",
-      "utils",
-      "constants",
-      "__mocks__"
-    ],
-    "modulePathIgnorePatterns": []
-  },
-```
+var gulp = require('gulpzilla')({
 
-Run in Terminal
+	/* enable/disable debug mode for browserify */
+	debug: process.env.NODE_ENV !== 'production',
 
-    $ gulp # default tasks to run browserify, bower, compile sass 
-    $ gulp watch # tasks to watch changes js/sassand to compile
-    $ gulp test # tasks to run all test suites
-    $ gulp test-one # tasks to run one test suite with related changed file
-
-
-### Configuration
-
-    var config = {
-    	debug: true, // browserify debug mode (for sourcemaps)
-    	publicDir: './public', // public directory to serve assets 
-    }
-
-    config.js = {
+	/* `browserify` configuration  
+	js: {
         srcDir: './src/js', // javascript source directory
         target: './src/js/index.js', // entry point for browserify
-        
+
         distDir: './public/js', // directory for bundled javascript
         distFilename: 'bundle.js' // filename for bundled javascript
     }
     
-    config.sass = {
-        srcDir: './src/sass', // sass source directory
-        target: './src/sass/index.js', // entry point for sass
-        
-        distDir: './public/css', // directory for bundled css
-        distFilename: 'bundle.css', // filename for bundled css
-        
-        bowerCopy: ['fontawesome'], // array of gulp copy task after bower
-        bowerDir: './vendor' // directory where bower.json is
-    }
-    
-    config.jest = {
-        srcDir: './__tests__', // test files directory
-        noStackTrace: true // jest should/not print stack trace on error
-    }
+    /* more configuration for additional setup: gulpzilla-[setup] */
+});
+```
+
+## Examples
+```
+$ git clone https://github.com/blacktangent/gulpzilla.git
+```
+
+Checkout [examples/frontend](https://github.com/blacktangent/gulpzilla/tree/master/examples/frontend) directory to try out how `gulpzilla` setup is integrated with other setups. e.g. `gulpzilla-jest`, `gulpzilla-sass`, `gulpzilla-disc`
