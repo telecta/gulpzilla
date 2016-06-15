@@ -1,6 +1,6 @@
 {
   "name": "gulpzilla",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "common gulp tasks to shaaaare",
   "main": "index.js",
   "scripts": {
