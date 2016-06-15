@@ -3,10 +3,14 @@ var color = require('cli-color');
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+
 var babelify = require('babelify');
 var watchify = require('watchify');
 var row_flow = require('browserify-row-flow');
+
 var util = require('gulp-util');
+var uglify = require('gulp-uglify');
 
 module.exports = function(gulp, opts){
     var config = opts.config;
@@ -26,9 +30,17 @@ module.exports = function(gulp, opts){
         b.add(config.js.target);
 
         function rebundle(){
-            return b.bundle()
-                    .pipe(source(config.js.distFilename || 'bundle.js'))
-                    .pipe(gulp.dest(config.js.distDir));
+            if(config.debug){
+                return b.bundle()
+                        .pipe(source(config.js.distFilename || 'bundle.js'))
+                        .pipe(gulp.dest(config.js.distDir));
+            }else{
+                return b.bundle()
+                        .pipe(source(config.js.distFilename || 'bundle.js'))
+                        .pipe(buffer())
+                        .pipe(uglify())
+                        .pipe(gulp.dest(config.js.distDir));
+            }
         }
 
         b.on('update', function(path){
