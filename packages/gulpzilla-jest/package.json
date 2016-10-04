@@ -1,0 +1,37 @@
+{
+  "name": "gulpzilla-jest",
+  "version": "2.0.0",
+  "description": "jest plugin for gulpzilla",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacktangent/gulpzilla.git"
+  },
+  "keywords": [
+    "gulpzilla",
+    "gulp",
+    "jest",
+    "mock",
+    "jasmine",
+    "unit",
+    "test",
+    "facebook"
+  ],
+  "author": "alvinsj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blacktangent/gulpzilla-jest/issues"
+  },
+  "homepage": "https://github.com/blacktangent/gulpzilla-jest#readme",
+  "dependencies": {
+    "npm": "^3.9.5",
+    "cli-color": "^1.1.0",
+    "invariant": "^2.2.1"
+  },
+  "peerDependencies": {
+    "jest-cli": "^15.x.x"
+  }
+}

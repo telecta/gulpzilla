@@ -1,0 +1,44 @@
+{
+  "name": "gulpzilla-browserify",
+  "version": "2.0.2",
+  "description": "common gulp tasks to shaaaare",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacktangent/gulpzilla.git"
+  },
+  "keywords": [
+    "gulp",
+    "browserify",
+    "babel"
+  ],
+  "author": "alvinsj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blacktangent/gulpzilla/issues"
+  },
+  "homepage": "https://github.com/blacktangent/gulpzilla#readme",
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "browserify-row-flow": "^0.1.0",
+    "cli-color": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "invariant": "^2.2.1",
+    "object-assign": "^4.1.0",
+    "run-sequence": "^1.2.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^3.7.0",
+    "yargs": "^4.7.1"
+  },
+  "engines": {
+    "node": "6.x.x",
+    "npm": "3.x.x"
+  }
+}
