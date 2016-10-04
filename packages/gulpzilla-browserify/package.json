@@ -1,6 +1,6 @@
 {
   "name": "gulpzilla-browserify",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "common gulp tasks to shaaaare",
   "main": "index.js",
   "scripts": {
