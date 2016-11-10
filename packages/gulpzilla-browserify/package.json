@@ -1,6 +1,6 @@
 {
   "name": "gulpzilla-browserify",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "common gulp tasks to shaaaare",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,6 @@
     "browserify-row-flow": "^0.1.0",
     "cli-color": "^1.1.0",
     "gulp": "^3.9.1",
-    "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "invariant": "^2.2.1",
     "object-assign": "^4.1.0",
