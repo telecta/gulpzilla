@@ -23,6 +23,8 @@ module.exports = function(gulp, opts){
             extensions: ['js', '.react.js', 'jsx']
         });
         b.transform("babelify", {
+            sourceMapsAbsolute: !!config.debug,
+            sourceMaps: !!config.debug,
             retainLines: !!config.debug,
             compact: !config.debug,
             minified: !config.debug,
