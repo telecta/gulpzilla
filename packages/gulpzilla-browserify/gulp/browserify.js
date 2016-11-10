@@ -29,6 +29,7 @@ module.exports = function(gulp, opts){
             compact: !config.debug,
             minified: !config.debug,
             comments: !!config.debug,
+            ast: !!config.debug
         });
         b = watch ? watchify(b) : b;
         b.add(config.js.target);
