@@ -33,6 +33,7 @@
     "object-assign": "^4.1.0",
     "pump": "^1.0.1",
     "run-sequence": "^1.2.1",
+    "uglify-js-harmony": "^2.6.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.7.0",
