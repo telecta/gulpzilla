@@ -10,6 +10,9 @@ var watchify = require('watchify');
 var row_flow = require('browserify-row-flow');
 
 var util = require('gulp-util');
+var uglifyjs = require('uglify-js-harmony');
+var minifier = require('gulp-uglify/minifier');
+var pump = require('pump');
 
 module.exports = function(gulp, opts){
     var config = opts.config;
@@ -52,8 +55,16 @@ module.exports = function(gulp, opts){
         return rebundle();
     }
 
-    gulp.task('browserify', function(){
+    gulp.task('browserify-build', function(){
         return build(false);
+    });
+
+    gulp.task('browserify', ['browserify-build'], function(cb){
+        pump([
+            gulp.src(config.js.distDir + '/' + config.js.distFilename),
+            minifier({}, uglifyjs),
+            gulp.dest(config.js.distDir)
+        ], cb);
     });
 
     gulp.task('watch-browserify', ['browserify'], function() {
