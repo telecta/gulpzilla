@@ -12,7 +12,7 @@ module.exports = function(gulp, opts){
             && config.js.distDir && config.js.distFilename,
         '{srcDir, target, distDir, distFilename} in config[\'js\'] is required.');
 
-    gulp.task('default', function () {
+    gulp.task('babel', function () {
         return gulp.src(config.js.target)
             .pipe(sourcemaps.init())
             .pipe(babel({sourceRoot: config.js.srcDir}))
