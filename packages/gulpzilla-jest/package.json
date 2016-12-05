@@ -1,6 +1,6 @@
 {
   "name": "gulpzilla-jest",
-  "version": "3.0.0",
+  "version": "3.2.8",
   "description": "jest plugin for gulpzilla",
   "main": "index.js",
   "scripts": {
