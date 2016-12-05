@@ -30,8 +30,5 @@
     "npm": "^3.9.5",
     "cli-color": "^1.1.0",
     "invariant": "^2.2.1"
-  },
-  "peerDependencies": {
-    "jest": "^16.x.x"
   }
 }
