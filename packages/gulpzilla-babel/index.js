@@ -7,17 +7,17 @@ module.exports = function(gulp, opts){
     var config = opts.config;
 
     invariant(
-        config.js && typeof config.js === 'object'
-            && config.js.srcDir && config.js.target
-            && config.js.distDir && config.js.distFilename,
-        '{srcDir, target, distDir, distFilename} in config[\'js\'] is required.');
+        config.babel && typeof config.babel === 'object'
+            && config.babel.srcDir && config.babel.target
+            && config.babel.distDir && config.babel.distFilename,
+        '{srcDir, target, distDir, distFilename} in config[\'babel\'] is required.');
 
     gulp.task('babel', function () {
-        return gulp.src(config.js.target)
+        return gulp.src(config.babel.target)
             .pipe(sourcemaps.init())
-            .pipe(babel({sourceRoot: config.js.srcDir}))
-            .pipe(concat(config.js.distFilename))
+            .pipe(babel({sourceRoot: config.babel.srcDir}))
+            .pipe(concat(config.babel.distFilename))
             .pipe(sourcemaps.write('.'))
-            .pipe(gulp.dest(config.js.distDir));
+            .pipe(gulp.dest(config.babel.distDir));
     });
 };
