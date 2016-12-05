@@ -8,14 +8,14 @@ module.exports = function(gulp, opts){
 
     invariant(
         config.babel && typeof config.babel === 'object'
-            && config.babel.srcDir && config.babel.target
+            && config.babel.srcDir
             && config.babel.distDir && config.babel.distFilename,
-        '{srcDir, target, distDir, distFilename} in config[\'babel\'] is required.');
+        '{srcDir, distDir, distFilename} in config[\'babel\'] is required.');
 
     gulp.task('babel', function () {
-        return gulp.src(config.babel.target)
+        return gulp.src(config.babel.srcDir)
             .pipe(sourcemaps.init())
-            .pipe(babel({sourceRoot: config.babel.srcDir}))
+            .pipe(babel(config.babel.options))
             .pipe(concat(config.babel.distFilename))
             .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest(config.babel.distDir));

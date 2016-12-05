@@ -6,7 +6,7 @@ var util = require('gulp-util');
 
 module.exports = function(gulp, opts){
     var config = opts.config;
-    var prev = "";
+    var prev = '';
 
     invariant(
         config.jest && typeof config.jest === 'object'
@@ -17,8 +17,8 @@ module.exports = function(gulp, opts){
         var jestWithPath = function(file){
             var path = file.path;
             if(!file.path.match(config.jest.srcDir)
-                && file.path.match(config.js.srcDir)){
-                var parts = file.path.split(config.js.srcDir);
+                && file.path.match(config.jest.srcDir)){
+                var parts = file.path.split(config.jest.srcDir);
                 //console.log(parts);
                 var name = parts[1].replace('.js', '-test.js');
                 path = parts[0]+'__tests__'+name;
@@ -36,23 +36,23 @@ module.exports = function(gulp, opts){
                     npm.commands.run(
                         command,
                         function(){
-                            hightlight("Finished jest for " + filename, true);
+                            hightlight('Finished jest for ' + filename, true);
                         });
                 });
-            }
+            };
 
             fs.exists(path, function(yes){
-                if(!yes) util.log(color.black['bgRed']('No test found in ' + path));
+                if(!yes) util.log(color.black.bgRed('No test found in ' + path));
                 else jest();
             });
         };
 
-        gulp.watch([config.jest.srcDir+'/**/*-test.js', config.js.srcDir+'/**/*.js']).on('change', jestWithPath);
+        gulp.watch([config.jest.srcDir+'/**/*-test.js', config.jest.srcDir+'/**/*.js']).on('change', jestWithPath);
     });
 
     gulp.task('jest', ['npm-run-jest'], function() {
-       gulp.watch(
-            [config.jest.srcDir+'/**/*-test.js', config.js.srcDir+'/**/*.js'],
+        gulp.watch(
+            [config.jest.srcDir+'/**/*-test.js', config.jest.srcDir+'/**/*.js'],
             ['npm-test']);
     });
 
@@ -70,4 +70,4 @@ module.exports = function(gulp, opts){
         util.log(e);
         prevColor = color.black[c[r]];
     }
-}
+};

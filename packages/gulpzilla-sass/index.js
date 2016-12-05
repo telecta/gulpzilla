@@ -27,7 +27,7 @@ module.exports = function(gulp, opts){
 
     gulp.task('css-rebundle', function(cb){
         sequence('ruby-sass', function(){
-            hightlight("Finished bundling for \'watch-sass\'");
+            hightlight('Finished bundling for \'watch-sass\'');
             cb.apply(null, arguments);
         });
     });
@@ -51,4 +51,4 @@ module.exports = function(gulp, opts){
         var e = color.black[c[r]](prefix);
         util.log(e);
     }
-}
+};

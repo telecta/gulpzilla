@@ -1,4 +1,4 @@
-var open = require('opener')
+var open = require('opener');
 var disc = require('disc');
 var fs = require('fs');
 var invariant = require('invariant');
@@ -9,40 +9,40 @@ var babelify = require('babelify');
 module.exports = function(gulp, opts, $){
     var config = opts.config;
 
-    invariant(config.js && config.js.srcDir,
-        '{srcDir} in config[\'js\'] is required.');
+    invariant(config.disc && config.disc.srcDir,
+        '{srcDir} in config[\'disc\'] is required.');
 
-    invariant(config.js && config.js.target,
-        '{target} in config[\'js\'] is required.');
+    invariant(config.disc && config.disc.target,
+        '{target} in config[\'disc\'] is required.');
 
     invariant(
         config.disc && typeof config.disc === 'object'
             && config.disc.outputPath,
         '{srcDir} in config[\'disc\'] is required.');
 
-    function disc(){
+    function discify(){
         var b = browserify({
             debug: true,
             cache: {},
             packageCache: {},
-            paths: [config.js.srcDir],
+            paths: [config.disc.srcDir],
             fullPaths: true
         });
-        b.transform("babelify", {
+        b.transform(babelify, {
             retainLines: true
         });
-        b.add(config.js.target);
+        b.add(config.disc.target);
 
         var outputPath = config.disc.outputPath;
         return b.bundle()
                 .pipe(disc())
                 .pipe(fs.createWriteStream(outputPath))
                 .once('close', function() {
-                    open(outputPath)
+                    open(outputPath);
                 });
     }
 
     gulp.task('disc', function(){
-        return disc();
+        return discify();
     });
-}
+};
