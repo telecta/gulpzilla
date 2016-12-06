@@ -45,7 +45,7 @@ module.exports = function(gulp, opts){
             .pipe(source(config.browserify.distFilename || 'bundle.js'));
 
             if(!config.debug){
-                p.pipe(buffer())
+                p = p.pipe(buffer())
                 .pipe(uglify());
             }
 
