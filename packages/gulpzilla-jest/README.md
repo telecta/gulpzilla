@@ -11,22 +11,11 @@ This adds 2 gulp commands to [gulpzilla](https://github.com/blacktangent/gulpzil
 $ npm install --save-dev gulpzilla-jest
 ```
 
-## Configuration
-In `gulpfile.js`:
-
-```
-const gulp = gulpzilla({
-  jest: {
-    srcDir: __dirname + '__tests__' /* the test source code */
-  }
-});
-```
-
 ## Requirement
 
-This plugin requires additional script defined: `npm run jest`  
+This plugin requires script: `npm run jest`  
 
-Simply add the script as shown below, in `package.json`:
+In `package.json`:
 
 ```
 {
@@ -36,9 +25,22 @@ Simply add the script as shown below, in `package.json`:
 }
 ```
 
+## Configuration
+In `gulpfile.js`:
+
+```
+const gulp = gulpzilla({
+  jest: {
+    srcDir: __dirname + '__tests__' // test directory
+  }
+});
+```
+
+
+
 ## Jest Configuration
 
-As `jest-cli` is a `peerDependencies`, jest configuration can be done following the usual ways in the official documentation inside `package.json`.  
+Configure jest the usual way explained in their official documentation.  
 
 For example, in `package.json`:
 
