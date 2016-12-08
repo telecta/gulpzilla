@@ -1,11 +1,9 @@
 # gulpzilla-browserify
-gulpzilla-browserify adds:
-```
-$ gulp browserify
-```
-```
-$ gulp watch-browserify
-```
+
+This adds 2 gulp commands to [gulpzilla](https://github.com/blacktangent/gulpzilla):
+
+1. `gulp browserify`
+2. `gulp watch-browserify`
 
 ## Install
 
@@ -13,7 +11,7 @@ $ gulp watch-browserify
     
 ## Configuration          
 
-Add this in your `gulpfile.js`:
+In `gulpfile.js`:
 
 ```
 var gulp = require('gulpzilla')({
