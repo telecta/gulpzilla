@@ -1,31 +1,37 @@
-# gulpzilla-jest
+# gulpzilla-sass
 
 This adds 2 gulp commands to [gulpzilla](https://github.com/blacktangent/gulpzilla):
 
 1. `gulp sass`
 2. `gulp watch-sass`
+3. `gulp css-rebundle`
+4. `gulp ruby-sass`
 
 ## Install
 
-```
-$ gem install sass # sass compilation is using sass rubygem
-$ npm install --save-dev gulpzilla-sass
-```
+    $ npm install gulpzilla-sass --save-dev   
+    
+## Requirement
 
-## Configuration
+    $ gem install sass # sass compiler
+    
+## Configuration          
+
 In `gulpfile.js`:
 
 ```
-const gulp = gulpzilla({
-  sass: {
-    srcDir: __dirname+'/src/sass', // sass source files
-    target: __dirname+'/src/sass/style.scss', // sass entry point
+var gulp = require('gulpzilla')({
 
-    distDir: __dirname+'/public/css', // destination directory for compiled css
-    distFilename: 'bundle.css', // destination filename for compiled css
-
-    loadPaths: [ './vendor/bower_components/bootstrap-sass-official/assets/stylesheets',
-    './vendor/bower_components/fontawesome/scss'], // additional load paths
-   }
+	/* gulpzilla-browserify configuration */  
+	sass: {
+        bundleExec: true, // using bundler for sass rubygem
+        srcDir: './styles/', // source, top level directory
+        target: './styles/v1/components.scss', // entry file
+        distDir: 'dist/styles/', // folder for bundled css 
+        distFilename: 'bundle.css', // filename for bundled css
+        loadPaths: ['./vendor/'] // additional load path for sass import
+    }
+    
+    /* more configuration for additional setup: gulpzilla-[setup] */
 });
 ```
