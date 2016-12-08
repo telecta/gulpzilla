@@ -5,7 +5,7 @@ const config = {
         srcDir: __dirname+'/__tests__'
     },
 
-    js: {
+    browserify: {
         srcDir: __dirname+'/src/js',
         target: __dirname+'/src/js/index.js',
 
@@ -45,5 +45,5 @@ gulp.task('test', ['jest']);
 // gulp.task('bootstrap-js', function() {
 //     return gulp
 //     .src(config.sass.bowerDir + '/bootstrap-sass-official/assets/javascripts/bootstrap.js')
-//     .pipe(gulp.dest(config.js.distDir));
+//     .pipe(gulp.dest(config.browserify.distDir));
 // });

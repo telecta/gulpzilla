@@ -1,0 +1,25 @@
+{
+  "name": "gulpzilla-babel",
+  "version": "4.0.2",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacktangent/gulpzilla.git"
+  },
+  "keywords": [
+    "gulp",
+    "babel"
+  ],
+  "author": "alvinsj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blacktangent/gulpzilla/issues"
+  },
+  "homepage": "https://github.com/blacktangent/gulpzilla#readme",
+  "dependencies": {
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "invariant": "^2.2.2"
+  }
+}

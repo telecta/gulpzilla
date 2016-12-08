@@ -1,4 +1,3 @@
-var sequence = require('run-sequence');
 var color = require('cli-color');
 
 var browserify = require('browserify');
@@ -7,40 +6,50 @@ var buffer = require('vinyl-buffer');
 
 var babelify = require('babelify');
 var watchify = require('watchify');
-var row_flow = require('browserify-row-flow');
 
 var util = require('gulp-util');
 var uglify = require('gulp-uglify');
+var invariant = require('invariant');
 
 module.exports = function(gulp, opts){
     var config = opts.config;
+
+    invariant(
+        config.browserify && typeof config.browserify === 'object'
+            && config.browserify.srcDir && config.browserify.target
+            && config.browserify.distDir && config.browserify.distFilename,
+        '{srcDir, target, distDir, distFilename} in config[\'browserify\'] is required.');
 
     function build(watch, watchCallback){
         var b = browserify({
             debug: config.debug || false,
             cache: {},
             packageCache: {},
-            paths: [config.js.srcDir],
+            paths: [config.browserify.srcDir],
             extensions: ['js', '.react.js', 'jsx']
         });
-        b.transform("babelify", {
-            retainLines: true
+        b.transform(babelify, {
+            sourceMapsAbsolute: !!config.debug,
+            sourceMaps: !!config.debug,
+            retainLines: !!config.debug,
+            compact: !config.debug,
+            minified: !config.debug,
+            comments: !!config.debug,
+            ast: !!config.debug
         });
         b = watch ? watchify(b) : b;
-        b.add(config.js.target);
+        b.add(config.browserify.target);
 
         function rebundle(){
-            if(config.debug){
-                return b.bundle()
-                        .pipe(source(config.js.distFilename || 'bundle.js'))
-                        .pipe(gulp.dest(config.js.distDir));
-            }else{
-                return b.bundle()
-                        .pipe(source(config.js.distFilename || 'bundle.js'))
-                        .pipe(buffer())
-                        .pipe(uglify())
-                        .pipe(gulp.dest(config.js.distDir));
+            var p = b.bundle()
+            .pipe(source(config.browserify.distFilename || 'bundle.js'));
+
+            if(!config.debug){
+                p = p.pipe(buffer())
+                .pipe(uglify());
             }
+
+            return p.pipe(gulp.dest(config.browserify.distDir));
         }
 
         b.on('update', function(path){
@@ -48,7 +57,7 @@ module.exports = function(gulp, opts){
             return rebundle();
         });
         b.on('time', function(time){
-            util.log("Finished "+color.yellowBright("rebundle()")+" after "+color.magenta(time+" ms"));
+            util.log('Finished '+color.yellowBright('rebundle()')+' after '+color.magenta(time+' ms'));
             watchCallback();
         });
 
@@ -71,4 +80,4 @@ module.exports = function(gulp, opts){
         var e = color.black[c[r]](prefix);
         util.log(e);
     }
-}
+};
