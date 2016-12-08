@@ -36,3 +36,10 @@ var gulp = require('gulpzilla')({
     /* more configuration for additional setup: gulpzilla-[setup] */
 });
 ```
+
+Run the gulp setup:
+
+```
+$ gulp browserify 
+```
+
