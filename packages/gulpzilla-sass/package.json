@@ -1,6 +1,6 @@
 {
   "name": "gulpzilla-sass",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "sass plugin for gulpzilla",
   "main": "index.js",
   "scripts": {

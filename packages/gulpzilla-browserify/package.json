@@ -1,6 +1,6 @@
 {
   "name": "gulpzilla-browserify",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "common gulp tasks to shaaaare",
   "main": "index.js",
   "scripts": {
@@ -38,9 +38,5 @@
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.7.0",
     "yargs": "^4.7.1"
-  },
-  "engines": {
-    "node": "6.x.x",
-    "npm": "3.x.x"
   }
 }
