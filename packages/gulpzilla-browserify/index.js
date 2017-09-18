@@ -10,6 +10,7 @@ var watchify = require('watchify');
 var util = require('gulp-util');
 var uglify = require('gulp-uglify');
 var invariant = require('invariant');
+var envify = require('envify/custom');
 
 module.exports = function(gulp, opts){
     var config = opts.config;
@@ -37,6 +38,10 @@ module.exports = function(gulp, opts){
             comments: !!config.debug,
             ast: !!config.debug
         });
+
+        if(config.browserify.envify)
+            b.transform(envify(config.browserify.envify));
+
         b = watch ? watchify(b) : b;
         b.add(config.browserify.target);
 
